@@ -1,53 +1,49 @@
+//program to calculate the gross pay of regular and contract employees using method overloading
 #include<iostream>
-#include"payslip.h"
 using namespace std;
-using namespace payslip;
+
+double gpay(double sal, double rentall, double travel)
+{
+  double grosspay;
+  grosspay=sal+rentall+travel;
+  cout<<"Grosspay of Regular Employee is: "<<grosspay;
+  return grosspay;
+}
+
+double gpay(double salary, double days)
+{
+ double grosspay;
+ grosspay = salary*days;
+ cout<<"Gross pay of Contract Employee is: "<<grosspay;
+ return grosspay;
+}
 
 int main()
 {
-    int n,empid,sal,hrall,meds,ndays;
-    string empname;
-    employee e[50];
-    payscale p[50];
+  int choice;
+  cout<<"Enter 1 to calculate gross pay of regular employees"<<endl;
+  cout<<"Enter 2 to calculate gross pay of contract employees"<<endl;
+  cout<<"Enter 3 to exit"<<endl;
+  while(1){
+  cout<<"\nEnter Choice: ";
+  cin>>choice;
+  switch(choice)
+  {
+   case 1:
+   gpay(20000,2000,1000);
+   break;
 
-    cout<<"Enter number of employees: ";
-    cin>>n;
-    for(int i=0;i<n;i++){
-    {
-        cout<<"Enter Name of Employee: ";
-        cin>>empname;
-        e[i].setName(empname);
-        cout<<"Enter Employee ID: ";
-        cin>>empid;
-        e[i].setId(empid);
+   case 2:
+   gpay(3000,30);
+   break;
 
-        cout<<"Enter Basic Salary: ";
-        cin>>sal;
-        cout<<"Enter House Rent Allowance: ";
-        cin>>hrall;
-        cout<<"Enter Medical Expenses: ";
-        cin>>meds;
-        cout<<"Enter Number of days worked: ";
-        cin>>ndays;
-        p[i].setSalary(sal);
-        p[i].setHouser(hrall);
-        p[i].setMedical(meds);
-        p[i].setDay(ndays);
-    }
-    cout<<"\n";}
-    //Display Payslip
-    for(int i=0;i<n;i++){
-    {
-        cout<<"**************** PAYSLIP FOR EMPLOYEMENT "<<(i+1)<<" ****************\n";
-        cout<<"Employee Name: "<<e[i].getName()<<endl;
-        cout<<"Employee ID: "<<e[i].getId()<<endl;
-        cout<<"Basic Salary: "<<p[i].getSalary()<<endl;
-        cout<<"House Rent Allowance: "<<p[i].getHouser()<<endl;
-        cout<<"Medical Expenses: "<<p[i].getMedical()<<endl;
-        cout<<"Number of days worked: "<<p[i].getDay()<<endl;
-    }
-    cout<<"\n";}
+   case 3:
+   exit(0);
+   break;
 
-    return 0;
+   default:
+   cout<<"Invalid Choice";
+  }}
 
+  return 0;
 }
